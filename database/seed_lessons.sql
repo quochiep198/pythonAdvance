@@ -1,5 +1,3 @@
-USE python_adventure;
-
 INSERT INTO lessons (
   slug,
   track,
@@ -349,12 +347,12 @@ VALUES
     'output_contains',
     'Chào Py-Bot!'
   )
-ON DUPLICATE KEY UPDATE
-  track = VALUES(track),
-  chapter = VALUES(chapter),
-  title = VALUES(title),
-  description = VALUES(description),
-  objective = VALUES(objective),
-  starter_code = VALUES(starter_code),
-  completion_check_type = VALUES(completion_check_type),
-  completion_check_value = VALUES(completion_check_value);
+ON CONFLICT (slug) DO UPDATE SET
+  track = EXCLUDED.track,
+  chapter = EXCLUDED.chapter,
+  title = EXCLUDED.title,
+  description = EXCLUDED.description,
+  objective = EXCLUDED.objective,
+  starter_code = EXCLUDED.starter_code,
+  completion_check_type = EXCLUDED.completion_check_type,
+  completion_check_value = EXCLUDED.completion_check_value;

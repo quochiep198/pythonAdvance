@@ -28,7 +28,7 @@ export function useLessons() {
         const response = await fetch('/api/lessons');
 
         if (!response.ok) {
-          throw new Error('Không tải được danh sách bài học từ MySQL.');
+          throw new Error('Không tải được danh sách bài học từ Neon DB.');
         }
 
         const data = (await response.json()) as Lesson[];

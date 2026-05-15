@@ -282,13 +282,13 @@ export function HomePage() {
               </h2>
               <p className="task-card__description">
                 {selectedLesson?.objective ||
-                  'Chọn một bài học để xem mục tiêu và mã khởi đầu từ MySQL.'}
+                  'Chọn một bài học để xem mục tiêu và mã khởi đầu từ Neon DB.'}
               </p>
               <div className="task-card__instruction">
                 <p>
                   {selectedLesson
                     ? `Starter code sẽ được nạp vào editor khi bạn chọn "${selectedLesson.title}".`
-                    : 'Danh sách bài học đang được tải từ cơ sở dữ liệu MySQL.'}
+                    : 'Danh sách bài học đang được tải từ cơ sở dữ liệu Neon DB.'}
                 </p>
               </div>
               <div className="task-card__status">
@@ -322,7 +322,7 @@ export function HomePage() {
                 ))}
               </div>
 
-              {lessonsLoading ? <p className="lessons-card__status">Đang tải bài học từ MySQL...</p> : null}
+              {lessonsLoading ? <p className="lessons-card__status">Đang tải bài học từ Neon DB...</p> : null}
               {lessonsError ? <p className="lessons-card__status is-error">{lessonsError}</p> : null}
               {progressLoading ? <p className="lessons-card__status">Đang tải tiến trình học tập...</p> : null}
 

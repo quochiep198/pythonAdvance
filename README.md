@@ -1,7 +1,7 @@
 # Python Adventure
 
 Frontend React/Vite cho bài học Python, kèm backend Node/Express nhỏ để:
-- đọc danh sách bài học từ MySQL
+- đọc danh sách bài học từ Neon Postgres
 - lưu tiến trình hoàn thành
 - gọi Groq để tạo gợi ý AI
 
@@ -11,7 +11,7 @@ Frontend React/Vite cho bài học Python, kèm backend Node/Express nhỏ để
 - TypeScript
 - Vite
 - Express
-- MySQL
+- Neon Postgres
 - Pyodide
 - Groq API
 
@@ -23,21 +23,17 @@ npm install
 
 Tạo `.env` từ `.env.example`.
 
-## Chuẩn bị MySQL
+## Chuẩn bị Neon DB
 
 ```bash
-mysql -u root -p < D:\python-ai\python-adventure\database\schema.sql
-mysql -u root -p python_adventure < D:\python-ai\python-adventure\database\seed_lessons.sql
+psql "postgresql://user:password@ep-example.ap-southeast-1.aws.neon.tech/neondb?sslmode=require" -f D:\python-ai\python-adventure\database\schema.sql
+psql "postgresql://user:password@ep-example.ap-southeast-1.aws.neon.tech/neondb?sslmode=require" -f D:\python-ai\python-adventure\database\seed_lessons.sql
 ```
 
 ## Biến môi trường
 
 ```env
-MYSQL_HOST=127.0.0.1
-MYSQL_PORT=3306
-MYSQL_USER=root
-MYSQL_PASSWORD=
-MYSQL_DATABASE=python_adventure
+DATABASE_URL=postgresql://user:password@ep-example.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
 API_PORT=3001
 GROQ_API_KEY=your_groq_api_key
 GROQ_MODEL=llama-3.3-70b-versatile
@@ -59,7 +55,7 @@ npm run dev
 
 ## Chức năng hiện có
 
-- danh sách bài học từ MySQL
+- danh sách bài học từ Neon Postgres
 - editor Python chạy bằng Pyodide trong browser
 - lưu tiến trình hoàn thành bài học
 - gợi ý AI qua Groq

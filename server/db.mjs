@@ -1,20 +1,19 @@
-import mysql from 'mysql2/promise';
+import { Pool } from '@neondatabase/serverless';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const pool = mysql.createPool({
-  host: process.env.MYSQL_HOST || '127.0.0.1',
-  port: Number(process.env.MYSQL_PORT || 3306),
-  user: process.env.MYSQL_USER || 'root',
-  password: process.env.MYSQL_PASSWORD || '',
-  database: process.env.MYSQL_DATABASE || 'python_adventure',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error('DATABASE_URL is not configured.');
+}
+
+const pool = new Pool({
+  connectionString,
 });
 
 export async function query(sql, params = []) {
-  const [rows] = await pool.execute(sql, params);
-  return rows;
+  const result = await pool.query(sql, params);
+  return result.rows;
 }
