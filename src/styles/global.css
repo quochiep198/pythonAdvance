@@ -59,16 +59,13 @@
 }
 
 html {
-  height: 100%;
-  overflow: hidden;
   background: var(--color-background);
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
   background: var(--color-background);
   color: var(--color-on-surface);
 }
@@ -90,8 +87,7 @@ select {
 }
 
 #root {
-  height: 100%;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 .material-symbols-outlined {
@@ -118,10 +114,7 @@ select {
 }
 
 .quest-page {
-  display: flex;
-  flex-direction: column;
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100vh;
   background: var(--color-background);
 }
 
@@ -206,8 +199,7 @@ select {
 
 .quest-layout {
   display: flex;
-  flex: 1;
-  min-height: 0;
+  min-height: calc(100vh - 80px);
   overflow: hidden;
 }
 
@@ -215,10 +207,8 @@ select {
   display: flex;
   flex: 0 0 256px;
   flex-direction: column;
-  min-height: 0;
   gap: 16px;
   padding: 8px;
-  overflow-y: auto;
   background: var(--color-surface-container-low);
   border-right: 4px solid var(--color-surface-container-highest);
   box-shadow: 4px 0 0 0 rgba(226, 222, 229, 1);
@@ -316,20 +306,16 @@ select {
 .lesson-layout {
   display: flex;
   flex: 1;
-  min-width: 0;
-  min-height: 0;
   overflow: hidden;
 }
 
 .lesson-panel {
   display: flex;
-  flex: 1 1 36rem;
+  flex: 0 0 40%;
   flex-direction: column;
-  min-width: 0;
-  min-height: 0;
   gap: 32px;
   padding: 40px;
-  overflow: hidden;
+  overflow-y: auto;
   background: var(--color-surface-bright);
 }
 
@@ -572,7 +558,6 @@ select {
 
 .lesson-item__content {
   display: flex;
-  min-width: 0;
   flex-direction: column;
   gap: 4px;
 }
@@ -643,13 +628,10 @@ select {
 
 .workspace-panel {
   display: flex;
-  flex: 1 1 0;
+  flex: 0 0 60%;
   flex-direction: column;
-  min-width: 0;
-  min-height: 0;
   gap: 16px;
   padding: 24px;
-  overflow: hidden;
   background: var(--color-surface-container-highest);
 }
 
@@ -657,7 +639,6 @@ select {
   display: flex;
   flex: 1;
   flex-direction: column;
-  min-height: 0;
   overflow: hidden;
   background: var(--color-inverse-surface);
   border: 4px solid var(--color-inverse-surface);
@@ -704,15 +685,11 @@ select {
 }
 
 .editor-shell__filename {
-  min-width: 0;
-  overflow: hidden;
   color: rgba(255, 255, 255, 0.5);
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
   letter-spacing: 0.14em;
-  text-overflow: ellipsis;
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .editor-shell__terminal {
@@ -721,8 +698,6 @@ select {
 
 .editor-shell__body {
   flex: 1;
-  min-height: 0;
-  overflow: hidden;
   font-family: 'JetBrains Mono', monospace;
   font-size: 20px;
   line-height: 1.6;
@@ -732,8 +707,6 @@ select {
 .editor-surface {
   display: flex;
   height: 100%;
-  min-height: 0;
-  overflow: auto;
   padding: 24px;
   gap: 16px;
 }
@@ -820,9 +793,8 @@ select {
 
 .output-shell {
   display: flex;
-  flex: 0 0 18rem;
+  flex: 0 0 33%;
   flex-direction: column;
-  min-width: 0;
   padding: 24px;
   background: #ffffff;
   border: 4px solid var(--color-surface-container-highest);
@@ -960,33 +932,11 @@ select {
 @media (max-width: 1024px) {
   .lesson-layout {
     flex-direction: column;
-    overflow-y: auto;
   }
 
   .lesson-panel,
   .workspace-panel {
     flex-basis: auto;
-    width: 100%;
-  }
-
-  .lesson-panel {
-    padding: 28px;
-    gap: 24px;
-  }
-
-  .workspace-panel {
-    padding: 20px;
-  }
-
-  .task-card,
-  .story-card,
-  .lessons-card,
-  .output-shell {
-    padding: 20px;
-  }
-
-  .editor-shell__actions {
-    padding: 20px;
   }
 }
 
@@ -1001,41 +951,19 @@ select {
   }
 
   .quest-layout {
-    min-height: 0;
+    min-height: calc(100vh - 160px);
   }
 
   .lesson-layout {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-height: 0;
     width: 100%;
     padding-bottom: 96px;
   }
 
   .lesson-panel {
-    flex: 1 1 auto;
     gap: 24px;
     padding: 24px 24px 12px;
-  }
-
-  .lessons-card__header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .lesson-item {
-    flex-wrap: wrap;
-  }
-
-  .lesson-item__content {
-    flex: 1 1 12rem;
-  }
-
-  .lesson-item__state {
-    width: 100%;
-    margin-left: 50px;
-    white-space: normal;
   }
 
   .lesson-panel__title {
@@ -1047,32 +975,7 @@ select {
   }
 
   .workspace-panel {
-    flex: 1 1 auto;
     padding: 16px;
-  }
-
-  .editor-shell__header,
-  .editor-shell__actions,
-  .output-shell {
-    padding: 16px;
-  }
-
-  .editor-shell__meta {
-    min-width: 0;
-    gap: 12px;
-  }
-
-  .editor-shell__terminal {
-    flex: 0 0 auto;
-  }
-
-  .editor-surface {
-    padding: 16px;
-    gap: 12px;
-  }
-
-  .editor-shell__body {
-    font-size: 16px;
   }
 
   .editor-shell__actions {
@@ -1095,57 +998,5 @@ select {
 
   .mobile-nav {
     display: flex;
-  }
-}
-
-@media (max-width: 560px) {
-  .topbar {
-    gap: 12px;
-  }
-
-  .topbar__title {
-    font-size: 20px;
-  }
-
-  .lesson-panel {
-    padding: 20px 16px 12px;
-  }
-
-  .story-card,
-  .task-card,
-  .lessons-card,
-  .workspace-panel,
-  .output-shell {
-    padding: 16px;
-  }
-
-  .story-card {
-    flex-direction: column;
-  }
-
-  .task-card__title {
-    font-size: 20px;
-  }
-
-  .task-card__description {
-    font-size: 17px;
-  }
-
-  .lesson-item {
-    gap: 10px;
-    padding: 12px;
-  }
-
-  .lesson-item__order {
-    min-width: 28px;
-  }
-
-  .lesson-item__state {
-    margin-left: 38px;
-    font-size: 11px;
-  }
-
-  .editor-button--primary {
-    font-size: 20px;
   }
 }
